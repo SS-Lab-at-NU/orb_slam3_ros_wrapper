@@ -1,10 +1,14 @@
 cmake_minimum_required(VERSION 2.8)
 project(orb_slam3_ros_wrapper)
 
-# Change this to your installation of ORB-SLAM3. Default is ~/
-set(ORB_SLAM3_DIR
-   $ENV{HOME}/ORB_SLAM3
-)
+# Checks for ORB-SLAM3 path
+if(DEFINED ENV{ORB_SLAM3_DIR})
+   set(ORB_SLAM3_DIR
+      $ENV{ORB_SLAM3_DIR}
+   )
+else()
+   MESSAGE(FATAL_ERROR "ORB_SLAM3_DIR environment variable not set! Set to path of ORB_SLAM3.")
+endif()
 
 set(CMAKE_BUILD_TYPE "Release")
 set(CMAKE_CXX_FLAGS "-std=c++14")
