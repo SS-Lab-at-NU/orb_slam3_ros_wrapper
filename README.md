@@ -83,6 +83,7 @@ roslaunch orb_slam3_ros_wrapper orb_slam3_aerobat_mono.launch
 - In another terminal, playback the bag:
 ```
 rosbag play 320x240_data.bag
+```
 
 ### EuRoC dataset:
 
