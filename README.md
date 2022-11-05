@@ -20,11 +20,12 @@ General guide: first, install ORB-SLAM3 normally with all of its dependencies (a
 
 ## 1. ORB-SLAM3
 
-- Install the [prerequisites](https://github.com/UZ-SLAMLab/ORB_SLAM3#2-prerequisites).
+- Install the [prerequisites](https://github.com/SS-Lab-at-NU/ORB_SLAM3#2-prerequisites).
+
 - Clone ORB-SLAM3:
 ```
 cd ~
-git clone https://github.com/UZ-SLAMLab/ORB_SLAM3.git ORB_SLAM3
+git clone https://github.com/SS-Lab-at-NU/ORB_SLAM3.git ORB_SLAM3
 ```
 - Make changes to the source code if necessary to build successfully. For Ubuntu 20.04, you will need to change CMakeList from C++11 to C++14. I have incorporated the changes in [this fork](
 https://github.com/thien94/ORB_SLAM3).
@@ -41,18 +42,12 @@ chmod +x build.sh
 - Clone the package. Note that it should be a `catkin build` workspace.
 ```
 cd ~/catkin_ws/src/
-git clone https://github.com/thien94/orb_slam3_ros_wrapper.git
+git clone https://github.com/SS-Lab-at-NU/orb_slam3_ros_wrapper.git
 ```
 
-- Open `CMakeLists.txt` and change the directory that leads to ORB-SLAM3 library at the beginning of the file (default is home folder `~/`)
+- Set ORB_SLAM3 path
 ```
-cd ~/catkin_ws/src/orb_slam3_ros_wrapper/
-nano CMakeLists.txt
-
-# Change this to your installation of ORB-SLAM3. Default is ~/
-set(ORB_SLAM3_DIR
-   $ENV{HOME}/ORB_SLAM3
-)
+export ORB_SLAM3_DIR=<path>
 ```
 
 - Build the package normally.
@@ -71,6 +66,22 @@ sudo apt install ros-[DISTRO]-hector-trajectory-server
 - If everything works fine, you can now try the different launch files in the `launch` folder.
 
 ## 3. How to run
+
+### Aerobat Datasets:
+
+- In one terminal, launch the node:
+VIO
+```
+roslaunch orb_slam3_ros_wrapper orb_slam3_aerobat_monoimu.launch
+```
+VO
+```
+roslaunch orb_slam3_ros_wrapper orb_slam3_aerobat_mono.launch
+```
+
+- In another terminal, playback the bag:
+```
+rosbag play 320x240_data.bag
 
 ### EuRoC dataset:
 
