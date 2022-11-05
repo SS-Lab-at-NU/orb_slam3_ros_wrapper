@@ -70,6 +70,7 @@ sudo apt install ros-[DISTRO]-hector-trajectory-server
 ### Aerobat Datasets:
 
 - In one terminal, launch the node:
+
 VIO
 ```
 roslaunch orb_slam3_ros_wrapper orb_slam3_aerobat_monoimu.launch
